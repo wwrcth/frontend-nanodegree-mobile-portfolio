@@ -1,0 +1,28 @@
+Options +ExecCGI -Indexes
+DirectoryIndex  index.html index.htm
+
+ServerSignature Off
+AddType video/x-flv .flv
+AddType application/x-shockwave-flash .swf
+AddType image/x-icon .ico
+AddDefaultCharset UTF-8
+DefaultLanguage en-US
+SetEnv TZ America/Indianapolis
+SetEnv SERVER_ADMIN webmaster@^^SITE^^.^^TLD^^
+
+AddHandler fastcgi-script fcgi
+AddHandler php-cgi .php
+Action php-cgi /cgi-bin/php5-wrapper.fcgi
+
+Header set Cache-Control "max-age=600"
+
+Redirect 301 /2006/uncategorized/htaccesselitecom-aboutus.html http://www.^^SITE^^.^^TLD^^
+
+RewriteEngine On
+RewriteBase /
+
+
+AuthName "^^SITE^^.^^TLD^^"
+Require valid-user
+AuthUserFile /^^SITE^^.^^TLD^^/.htpasswd
+AuthType basic
